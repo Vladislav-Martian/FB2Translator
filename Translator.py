@@ -60,12 +60,14 @@ for adr in FILES:
     counter = lim
     Number = len(paragraphs)
     for p in paragraphs:
-        # time.sleep(1.5)
+        time.sleep(0.5)
         if counter == 0:
             break
+        if not p.text:
+            continue
         translated_text = translator.translate(p.text, LANG, "ru")
         p.text = translated_text.text
-        print(f"Text {Number}:", translated_text.text[:30], '...')
+        print(f"Text {Number}:", translated_text.text[:60], '...')
         Number -= 1
         counter -= 1
 
